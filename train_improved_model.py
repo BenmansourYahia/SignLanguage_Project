@@ -15,10 +15,10 @@ import numpy as np
 import os
 
 # Configuration
-TRAINING_DATA_DIR = "trainingdata"
+TRAINING_DATA_DIR = "combined_dataset"  # Combined Kaggle + custom images
 IMAGE_SIZE = 32
 BATCH_SIZE = 32
-EPOCHS = 50  # Maximum training for best accuracy
+EPOCHS = 30  # Reduced - with 83K images, less epochs needed
 LEARNING_RATE = 0.001
 
 print("="*60)
@@ -108,18 +108,29 @@ model.compile(
 
 # Callbacks for better training
 callbacks = [
+    # Save best model during training
+    keras.callbacks.ModelCheckpoint(
+        filepath='best_model.h5',
+        monitor='val_accuracy',
+        save_best_only=True,
+        mode='max',
+        verbose=1
+    ),
+    # Reduce learning rate when plateau
     keras.callbacks.ReduceLROnPlateau(
         monitor='val_loss',
         factor=0.5,
-        patience=3,
+        patience=2,
         verbose=1,
         min_lr=0.00001
     ),
+    # Stop early if no improvement
     keras.callbacks.EarlyStopping(
         monitor='val_accuracy',
         patience=5,
         restore_best_weights=True,
-        verbose=1
+        verbose=1,
+        mode='max'
     )
 ]
 
