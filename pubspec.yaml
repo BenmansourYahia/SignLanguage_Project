@@ -18,6 +18,11 @@ dependencies:
   tflite_v2: ^1.0.0           # Optimized for running .tflite models
   permission_handler: ^11.3.1 # Handles runtime camera permissions
   
+  # Firebase for data storage
+  firebase_core: ^3.0.0       # Firebase core functionality
+  cloud_firestore: ^5.0.0     # Cloud database
+  uuid: ^4.0.0                # Generate unique session IDs
+  
   # Standard UI icons
   cupertino_icons: ^1.0.8
 
@@ -27,6 +32,9 @@ dev_dependencies:
 
   # Recommended linting for cleaner code
   flutter_lints: ^5.0.0
+  
+  # App icon generator
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   # Enable Material Design
@@ -36,3 +44,12 @@ flutter:
   assets:
     - assets/model.tflite
     - assets/labels.txt
+    - assets/NIDCD.webp
+
+# App Icon Configuration
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "web/sign-language.png"
+  adaptive_icon_background: "#1E1E1E"
+  adaptive_icon_foreground: "web/sign-language.png"

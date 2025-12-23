@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "89715860496",
+    "project_id": "asl-detector-6dae4",
+    "storage_bucket": "asl-detector-6dae4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89715860496:android:4702f60a03999ae5ad5695",
+        "android_client_info": {
+          "package_name": "com.example.signlanguage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNl_Z9uz0z9eqLtpEqe-FTpL_Y41Y8Gz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

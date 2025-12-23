@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:tflite_v2/tflite_v2.dart';
+import '../utils/app_colors.dart';
+import '../widgets/hand_guide_painter.dart';
+import '../services/firebase_service.dart';
 import '../main.dart';
 
 class DetectionScreen extends StatefulWidget {
@@ -15,6 +18,8 @@ class _DetectionScreenState extends State<DetectionScreen> {
   String output = "Initializing...";
   double confidence = 0.0;
   bool isBusy = false;
+  final FirebaseService _firebaseService = FirebaseService();
+  DateTime? _lastSaveTime;  // Track last save time for cooldown
 
   @override
   void initState() {
@@ -96,6 +101,17 @@ class _DetectionScreenState extends State<DetectionScreen> {
           if (predictionConfidence >= 50.0) {
             // High confidence - show the prediction
             output = predictedLabel;
+            
+            // Save to Firebase with 5-second cooldown
+            final now = DateTime.now();
+            if (_lastSaveTime == null || 
+                now.difference(_lastSaveTime!).inSeconds >= 5) {
+              _firebaseService.saveDetection(
+                detectedSign: predictedLabel,
+                confidence: predictionConfidence,
+              );
+              _lastSaveTime = now;  // Update last save time
+            }
           } else if (predictionConfidence >= 25.0) {
             // Medium confidence - show but with uncertainty indicator
             output = "$predictedLabel?";

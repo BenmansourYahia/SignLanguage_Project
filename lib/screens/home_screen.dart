@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'detection_screen.dart';
 import 'guide_screen.dart';
+import '../utils/app_colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,59 +10,67 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.blueGrey.shade900,
-              Colors.black,
-            ],
-          ),
+        decoration: const BoxDecoration(
+          gradient: AppColors.mainGradient,
         ),
         child: SafeArea(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(32.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // App Logo/Icon
-                  Icon(
-                    Icons.sign_language,
-                    size: 120,
-                    color: Colors.blueAccent.shade200,
+                  // Minimalist Logo
+                  Container(
+                    padding: const EdgeInsets.all(28),
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(24),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.charcoal.withOpacity(0.08),
+                          blurRadius: 30,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.sign_language,
+                      size: 70,
+                      color: AppColors.charcoal,
+                    ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 40),
                   
-                  // App Title
+                  // App Title - Clean and simple
                   const Text(
                     'ASL Detector',
                     style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      letterSpacing: 1.2,
+                      fontSize: 38,
+                      fontWeight: FontWeight.w300,
+                      color: AppColors.textPrimary,
+                      letterSpacing: 2.0,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 12),
                   
                   // Subtitle
                   Text(
-                    'Real-time American Sign Language Recognition',
+                    'Real-time Sign Language Recognition',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white70,
-                      height: 1.5,
+                      fontSize: 15,
+                      color: AppColors.textSecondary,
+                      height: 1.6,
+                      letterSpacing: 0.5,
                     ),
                   ),
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 70),
                   
-                  // Start Detection Button
+                  // Start Detection Button - Minimalist design
                   SizedBox(
                     width: double.infinity,
-                    height: 60,
+                    height: 62,
                     child: ElevatedButton.icon(
                       onPressed: () {
                         Navigator.push(
@@ -71,27 +80,31 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      icon: const Icon(Icons.camera_alt, size: 28),
+                      icon: const Icon(Icons.camera_alt, size: 24),
                       label: const Text(
                         'Start Detection',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.5,
+                        ),
                       ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                        foregroundColor: Colors.white,
+                        backgroundColor: AppColors.charcoal,
+                        foregroundColor: AppColors.white,
+                        elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        elevation: 8,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 16),
                   
-                  // ASL Guide Button
+                  // ASL Guide Button - Outlined minimalist
                   SizedBox(
                     width: double.infinity,
-                    height: 60,
+                    height: 62,
                     child: OutlinedButton.icon(
                       onPressed: () {
                         Navigator.push(
@@ -101,16 +114,20 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      icon: const Icon(Icons.menu_book, size: 28),
+                      icon: const Icon(Icons.menu_book, size: 24),
                       label: const Text(
                         'ASL Guide',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.5,
+                        ),
                       ),
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: Colors.blueAccent.shade200,
-                        side: BorderSide(
-                          color: Colors.blueAccent.shade200,
-                          width: 2,
+                        foregroundColor: AppColors.charcoal,
+                        side: const BorderSide(
+                          color: AppColors.charcoal,
+                          width: 1.5,
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
@@ -119,17 +136,31 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 60),
                   
-                  // Info Text
-                  Text(
-                    '29 Signs Supported\nA-Z + Space, Delete, Nothing',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white60,
-                      height: 1.5,
-                    ),
+                  // Info Text - Minimal
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 6,
+                        height: 6,
+                        decoration: const BoxDecoration(
+                          color: AppColors.warmAccent,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        '26 ASL Alphabet Signs',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: AppColors.textHint,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

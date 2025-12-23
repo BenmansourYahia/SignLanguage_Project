@@ -18,7 +18,7 @@ import os
 TRAINING_DATA_DIR = "combined_dataset"  # Combined Kaggle + custom images
 IMAGE_SIZE = 32
 BATCH_SIZE = 32
-EPOCHS = 30  # Reduced - with 83K images, less epochs needed
+EPOCHS = 20  # Train exactly 20 epochs
 LEARNING_RATE = 0.001
 
 print("="*60)
@@ -124,14 +124,7 @@ callbacks = [
         verbose=1,
         min_lr=0.00001
     ),
-    # Stop early if no improvement
-    keras.callbacks.EarlyStopping(
-        monitor='val_accuracy',
-        patience=5,
-        restore_best_weights=True,
-        verbose=1,
-        mode='max'
-    )
+    # Early stopping DISABLED - train all 20 epochs
 ]
 
 print("✓ Model compiled with learning rate decay")

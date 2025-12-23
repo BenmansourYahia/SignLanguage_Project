@@ -43,3 +43,28 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# ============================================
+# DATASET AND MODEL FILES (DO NOT PUSH)
+# ============================================
+
+# Training datasets (too large for GitHub)
+trainingdata/
+kaggle_dataset/
+combined_dataset/
+Videos/
+
+# Model files (can be regenerated)
+*.h5
+*.tflite
+best_model.h5
+model.tflite
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Kaggle credentials
+.kaggle/
+kaggle.json
