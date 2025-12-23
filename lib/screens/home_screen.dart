@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'detection_screen.dart';
 import 'guide_screen.dart';
+import 'history_screen.dart';
 import '../utils/app_colors.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -101,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   
-                  // ASL Guide Button - Outlined minimalist
+                  // ASL Guide Button - Minimalist design
                   SizedBox(
                     width: double.infinity,
                     height: 62,
@@ -114,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      icon: const Icon(Icons.menu_book, size: 24),
+                      icon: const Icon(Icons.book_outlined, size: 22),
                       label: const Text(
                         'ASL Guide',
                         style: TextStyle(
@@ -124,13 +125,49 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: AppColors.charcoal,
+                        foregroundColor: AppColors.textPrimary,
                         side: const BorderSide(
-                          color: AppColors.charcoal,
+                          color: AppColors.textPrimary,
                           width: 1.5,
                         ),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  
+                  // History Button - Minimalist design
+                  SizedBox(
+                    width: double.infinity,
+                    height: 62,
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HistoryScreen(),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.history, size: 22),
+                      label: const Text(
+                        'Detection History',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppColors.textPrimary,
+                        side: const BorderSide(
+                          color: AppColors.textPrimary,
+                          width: 1.5,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                     ),
